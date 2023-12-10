@@ -17,6 +17,10 @@
  * For example, to get decimal value:
  *  temp = DS18B20_read() / 100;
  */
+#ifdef __cplusplus
+extern "C" int16_t DS18B20_read(uint8_t pin);
+#else
 int16_t DS18B20_read(uint8_t pin);
+#endif
 
 #endif	/* !_ATTINY_DS18B20_H_ */
