@@ -14,16 +14,18 @@ DS18B20_read(uint8_t pin)
 	int8_t sign = 1;
 	uint16_t t;
 
-	onewire_reset(pin);
-	onewire_write(pin, ONEWIRE_SKIP_ROM);
-	onewire_write(pin, DS18B20_CONVERT_T);
+	uint8_t pinval = _BV(pin);
 
-	onewire_reset(pin);
-	onewire_write(pin, ONEWIRE_SKIP_ROM);
-	onewire_write(pin, DS18B20_READ);
+	onewire_reset(pinval);
+	onewire_write(pinval, ONEWIRE_SKIP_ROM);
+	onewire_write(pinval, DS18B20_CONVERT_T);
 
-	lsb = onewire_read(pin);
-	msb = onewire_read(pin);
+	onewire_reset(pinval);
+	onewire_write(pinval, ONEWIRE_SKIP_ROM);
+	onewire_write(pinval, DS18B20_READ);
+
+	lsb = onewire_read(pinval);
+	msb = onewire_read(pinval);
 	t = ((uint16_t)msb << 8) | lsb;
 
 	if ((msb & 0xf8) == 0xf8) {		
