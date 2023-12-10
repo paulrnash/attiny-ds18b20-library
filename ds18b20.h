@@ -13,9 +13,9 @@
 #define	DS18B20_READ		0xBE
 
 /* Read temperature (Celcius).
- * Returns real number rounded to two decimal places as integer.
+ * Returns real number rounded to one decimal place as integer.
  * For example, to get decimal value:
- *  temp = DS18B20_read() / 100;
+ *  temp = DS18B20_read() / 10;
  */
 #ifdef __cplusplus
 extern "C" int16_t DS18B20_read(uint8_t pin);
