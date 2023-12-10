@@ -14,7 +14,7 @@ DS18B20_read(uint8_t pin)
 	int8_t sign = 1;
 	uint16_t t;
 
-	uint8_t pinval = _BV(pin);
+	uint8_t pinval = (1 << pin);
 
 	onewire_reset(pinval);
 	onewire_write(pinval, ONEWIRE_SKIP_ROM);
